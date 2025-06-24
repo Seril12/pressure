@@ -14,7 +14,7 @@ const data =[
     {time: 5400, pressure: 22},
     {time: 7200, pressure: 15},
 ];
-
+const latestPoint = data.length > 0 ? data[data.length - 1] : null;
 function Graph(){
     return(
         <div className = "graph">
@@ -59,6 +59,19 @@ function Graph(){
              contentStyle={{backgroundColor: "white", border:'none'}}
              />
             </LineChart>
+                  {latestPoint && (
+        <div
+          style={{
+            color: "red",
+            fontSize: "15px",
+            fontWeight: "bold",
+            marginTop: "10px",
+            textAlign: "center"
+          }}
+        >
+          Pressure: {latestPoint.pressure.toFixed(2)}mmHg
+        </div>
+      )}
         </div>
     );
 }
